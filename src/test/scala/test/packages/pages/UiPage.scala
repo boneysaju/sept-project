@@ -1,4 +1,4 @@
-package pages
+package test.packages.pages
 
 import org.openqa.selenium.By
 

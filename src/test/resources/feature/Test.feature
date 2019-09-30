@@ -13,10 +13,10 @@ Feature: Web UI testing
     And I click on the save button
     Then a pop up will appear
 
-    Scenario: Testing put endpoint
-      Given I have added a politician to the database via the API
-      Then I can retrieve the latest 5 politicians
-      Then I grab the latest Politician from the list
+  Scenario: Testing put endpoint
+    Given I have added a politician to the database via the API
+    Then I can retrieve the latest 5 politicians
+    Then I grab the latest Politician from the list
 
 
 

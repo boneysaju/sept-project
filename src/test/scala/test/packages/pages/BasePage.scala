@@ -1,11 +1,10 @@
-package pages
-
+package test.packages.pages
 
 import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.scalatest.Matchers
 import org.scalatest.selenium.WebBrowser
-import utils.driver
+import test.packages.utils.driver
 
 trait BasePage extends driver with Matchers with WebBrowser {
 

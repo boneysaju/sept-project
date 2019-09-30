@@ -1,7 +1,7 @@
-package stepDefs
+package test.packages.cucumber.stepdefs
 
 import cucumber.api.scala.{EN, ScalaDsl}
-import pages.{BasePage, UiPage}
+import test.packages.pages.{BasePage, UiPage}
 
 class UiStepDefs extends ScalaDsl with EN with BasePage {
 
