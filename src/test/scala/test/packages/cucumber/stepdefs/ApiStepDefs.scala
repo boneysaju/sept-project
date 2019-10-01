@@ -9,9 +9,9 @@ class ApiStepDefs extends ScalaDsl with EN with BasePage {
   }
 
 
-  Then("""^I can retrieve the latest 5 politicians$""") {
-    ApiSteps.getLatestFivePoliticians
-  }
+//  Then("""^I can retrieve the latest 5 politicians$""") {
+//    ApiSteps.getLatestFivePoliticians
+//  }
 
   Then("""^I grab the latest Politician from the list$""") {
     ApiSteps.getPolitician

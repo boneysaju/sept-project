@@ -6,7 +6,7 @@ import test.packages.pages.{BasePage, TestData, UiPage}
 class UiStepDefs extends ScalaDsl with EN with BasePage {
 
   Given("""^I navigate to the test website$""") {
-    UiPage.navigateToNewEntityPage
+    navigateTo("http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/")
   }
 
 

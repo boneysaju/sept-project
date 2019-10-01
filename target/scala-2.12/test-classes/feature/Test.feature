@@ -11,12 +11,12 @@ Feature: Web UI testing
     Then I enter the source URL 'https://testingtest.co.uk'
     And I select the Risk level to be 'HUGE'
     And I click on the save button
-    Then a pop up will appear
+    Then a pop up will appear and the name will be correct
 
-  Scenario: Testing put endpoint
-    Given I have added a politician to the database via the API
-    Then I can retrieve the latest 5 politicians
-    Then I grab the latest Politician from the list
+#  Scenario: Testing put endpoint
+#    Given I have added a politician to the database via the API
+#    Then I can retrieve the latest 5 politicians
+#    Then I grab the latest Politician from the list
 
 
 

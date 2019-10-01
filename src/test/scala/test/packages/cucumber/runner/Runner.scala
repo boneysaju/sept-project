@@ -1,4 +1,4 @@
-package test.packages.cucumber.Runner
+package test.packages.cucumber.runner
 
 import cucumber.api.CucumberOptions
 import cucumber.api.junit.Cucumber

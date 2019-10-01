@@ -24,18 +24,18 @@ object ApiSteps extends BasePage {
   }
 
 
-  def getLatestFivePoliticians(): Unit = {
-    val httpResponse: HttpResponse[String] = Http(getPolticiansUrl)
-      .asString
-
-    val jsonBody: JsValue = Json.parse(httpResponse.body).as[JsArray]
-    id = (jsonBody(0) \ "applicationReference").get.as[String]
-
-
-    println(s"THE ID OF THE FIRST USER ON THE LIST IS: $id")
-    httpResponse.code shouldBe 200
-
-  }
+//  def getLatestFivePoliticians(): Unit = {
+//    val httpResponse: HttpResponse[String] = Http(getPolticiansUrl)
+//      .asString
+//
+//    val jsonBody: JsValue = Json.parse(httpResponse.body).as[JsArray]
+//    id = (jsonBody(0) \ "applicationReference").get.as[String]
+//
+//
+//    println(s"THE ID OF THE FIRST USER ON THE LIST IS: $id")
+//    httpResponse.code shouldBe 200
+//
+//  }
 
   def getPolitician(): Unit = {
     val httpResponse: HttpResponse[String] = Http(getPolticiansUrlById(id))
