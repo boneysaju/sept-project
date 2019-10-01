@@ -4,7 +4,7 @@
 		module="septemberproj-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20190930185339"
+		publication="20191001105450"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

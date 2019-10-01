@@ -6,7 +6,9 @@ import test.packages.pages.{BasePage, TestData, UiPage}
 class UiStepDefs extends ScalaDsl with EN with BasePage {
 
   Given("""^I navigate to the test website$""") {
-    navigateTo("http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/")
+    //    navigateTo("http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/")
+    //    go to "http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/"
+    driver.navigate.to("http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/")
   }
 
 
@@ -24,7 +26,7 @@ class UiStepDefs extends ScalaDsl with EN with BasePage {
     UiPage.selectDoB(day, month, year)
   }
 
-  And("""^I select the Risk level to be '(.*)'$""") { level =>
+  And("""^I select the Risk level to be '(.*)'$""") { level: String =>
     UiPage.selectRiskLevel(level)
   }
 
@@ -35,11 +37,10 @@ class UiStepDefs extends ScalaDsl with EN with BasePage {
   Then("""^a pop up will appear and the name will be correct$""") {
     waitForPopUpBox()
     if (UiPage.getPopUpMessage contains (TestData.store("fullName"))) {
-      println("Terry Lawrence has been added to the database")
+      println(s"${(TestData.store("fullName"))} has been added to the database")
     }
     else {
-      print("Terry Lawrence has not been added to the database")
+      print(s"***********!!WARNING!!: ${(TestData.store("fullName"))} has not been added to the database*************")
     }
   }
-
 }

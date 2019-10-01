@@ -1,15 +1,15 @@
 package test.packages.pages
 
-import cucumber.api.Scenario
 import org.junit.{After, Before}
-import org.openqa.selenium.{By, OutputType, TakesScreenshot, WebDriverException}
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
+import org.openqa.selenium.{By, WebDriver}
 import org.scalatest.Matchers
 import org.scalatest.selenium.WebBrowser
-import test.packages.utils.driver
+import test.packages.utils.SingletonDriver
 
-trait BasePage extends driver with Matchers with WebBrowser {
+trait BasePage extends Matchers with WebBrowser {
 
+  implicit val driver: WebDriver = SingletonDriver.getInstance()
 
   def navigateTo(url: String): Unit = driver.navigate().to(url)
 
@@ -23,7 +23,7 @@ trait BasePage extends driver with Matchers with WebBrowser {
 
   def waitForPopUpBox() = {
     val driverWait: WebDriverWait = new WebDriverWait(driver, 90)
-    driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h1")))
+    driverWait.until(ExpectedConditions.visibilityOfElementLocated(By.className("modal-body")))
   }
 
   @Before
@@ -33,19 +33,10 @@ trait BasePage extends driver with Matchers with WebBrowser {
   }
 
   @After
-  def tearDown(result: Scenario) {
-    if (result.isFailed) driver match {
-      case screenshot1: TakesScreenshot =>
-        try {
-          val screenshot = screenshot1.getScreenshotAs(OutputType.BYTES)
-          result.embed(screenshot, "image/png")
-        } catch {
-          case somePlatformsDontSupportScreenshots: WebDriverException =>
-            System.err.println(somePlatformsDontSupportScreenshots.getMessage)
-        }
-      case _ =>
-    }
+  def tearDown() = {
+    sys.addShutdownHook(driver.quit())
   }
+
 
 }
 
