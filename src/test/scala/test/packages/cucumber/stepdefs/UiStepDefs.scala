@@ -1,7 +1,7 @@
 package test.packages.cucumber.stepdefs
 
 import cucumber.api.scala.{EN, ScalaDsl}
-import test.packages.pages.{BasePage, UiPage}
+import test.packages.pages.{BasePage, TestData, UiPage}
 
 class UiStepDefs extends ScalaDsl with EN with BasePage {
 
@@ -16,7 +16,7 @@ class UiStepDefs extends ScalaDsl with EN with BasePage {
       case "country" => UiPage.enterCountry(input)
       case "position" => UiPage.enterPosition(input)
       case "source info url" => UiPage.enterSourceInfoUrl(input)
-
+      case _ => throw new IllegalArgumentException(s"You have specified an unknown field")
     }
   }
 
@@ -32,9 +32,9 @@ class UiStepDefs extends ScalaDsl with EN with BasePage {
     UiPage.clickOnSave()
   }
 
-  Then("""^a pop up will appear$""") {
+  Then("""^a pop up will appear and the name will be correct$""") {
     waitForPopUpBox()
-    if (UiPage.getPopUpMessage contains "Terry Lawrence") {
+    if (UiPage.getPopUpMessage contains (TestData.store("fullName"))) {
       println("Terry Lawrence has been added to the database")
     }
     else {
